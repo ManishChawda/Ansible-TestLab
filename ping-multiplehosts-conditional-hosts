@@ -1,0 +1,16 @@
+[centos]
+192.168.250.3 ansible_ssh_user=manishc
+
+[ubuntu]
+192.168.250.4 ansible_ssh_user=manishc
+
+[windows]
+192.168.250.5
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=Sh1v@m123456
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+
+

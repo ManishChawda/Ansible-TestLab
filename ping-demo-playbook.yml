@@ -1,0 +1,9 @@
+- name: Ping Demo
+  hosts: all
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.12
+  tasks:
+    - name: Ping the host
+      ansible.builtin.ping:
+

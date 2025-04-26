@@ -1,0 +1,8 @@
+- name: Enable WinRM HTTPS
+  hosts: winhost
+  tasks:
+    - name: Enable WinRM Service
+      win_service:
+        name: WinRM
+        start_mode: auto
+        state: started

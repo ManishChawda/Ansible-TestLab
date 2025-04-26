@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Ansible Playbook (Ask for Inventory and Playbook)",
+      "type": "shell",
+      "command": "ansible-playbook -i ${input:inventoryFile} ${input:playbookFile}",
+      "problemMatcher": [],
+      "group": "build"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "inventoryFile",
+      "type": "promptString",
+      "description": "Enter inventory file name (e.g. inventory.yml)"
+    },
+    {
+      "id": "playbookFile",
+      "type": "promptString",
+      "description": "Enter playbook file name (e.g. ping.yml)"
+    }
+  ]
+}

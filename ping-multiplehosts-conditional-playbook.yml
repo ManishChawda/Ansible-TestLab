@@ -1,0 +1,19 @@
+- name: Ping CentOS, Ubuntu and Windows nodes
+  hosts: all
+  gather_facts: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.12
+  tasks:
+    - name: Ping CentOS hosts
+      ping: 
+      #when: ansible_connection =='ssh'
+      when: ansible_distribution == 'CentOS'
+
+    - name: Ping Ubuntu hosts
+      ping:
+      #when: ansible_connection =='ssh'
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Ping Windows hosts
+      win_ping:
+      when: ansible_connection == 'winrm'

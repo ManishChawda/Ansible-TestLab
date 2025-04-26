@@ -1,0 +1,13 @@
+all:
+  hosts:
+    winhost:
+      ansible_host: 192.168.250.5
+      ansible_user: Administrator
+      ansible_password: Sh1v@m123456
+      ansible_port: 5986
+      ansible_connection: winrm
+      ansible_winrm_transport: ssl
+      ansible_winrm_server_cert_validation: ignore
+
+#Use winrmservice-auto-windows-playbook.yml common for 
+#winrmservice-auto-windows-inventory.yml and winrmservice-auto-windows-hosts

@@ -1,0 +1,9 @@
+- name: Test Ansible with localhost
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.12
+  tasks:
+    - name: Ping localhost
+      ansible.builtin.ping:
+
