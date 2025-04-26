@@ -1,0 +1,23 @@
+- name: Manage Windows with Ansible
+  hosts: windows
+  gather_facts: no
+  tasks:
+    - name: Check connection
+      ansible.windows.win_ping:
+
+    - name: Run a PowerShell command
+      ansible.windows.win_shell: Get-Process
+      register: ps_output
+
+    - name: Show output command
+      debug:
+        var: ps_output.stdout_lines
+
+    #- name: Ensure a feature is installed (e.g. Telnet)
+      #ansible.windows.win_feature:
+        #name: Telnet-Client
+        #state: present
+
+    #- name: Reboot Windows
+      #ansible.windows.win_reboot:
+        #reboot_timeout: 300

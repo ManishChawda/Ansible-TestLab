@@ -1,0 +1,11 @@
+[windows]
+winhost ansible_host=192.168.250.5
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=Sh1v@m123456
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_transport=ssl
+ansible_winrm_server_cert_validation=ignore
+#ansible_winrm_ca_trust_path=/etc/pki/ca-trust/source/anchors/Windows-Node-New.cer

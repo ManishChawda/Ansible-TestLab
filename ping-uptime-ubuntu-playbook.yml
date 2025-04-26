@@ -1,0 +1,9 @@
+- name: Manage Linux hosts
+  hosts: linux
+  gather_facts: yes
+  tasks:
+    - name: Ping
+      ping:
+
+    - name: Check uptime
+      command: uptime

@@ -1,0 +1,14 @@
+- name: Enable WinRM HTTPS
+  hosts: all
+  vars_files:
+    - winrm_vault_credentials.yml
+  tasks:
+    - name: Enable WinRM Service
+      win_service:
+        name: WinRM
+        start_mode: auto
+        state: started
+
+    - name: Display completion message
+      ansible.builtin.debug:
+        msg: "WinRM service has been started"

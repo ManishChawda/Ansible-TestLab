@@ -1,0 +1,13 @@
+- name: Ping Linux and Windows nodes
+  hosts: all
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.12
+  tasks:
+    - name: Ping Linux hosts
+      ping:
+      when: ansible_connection == 'ssh'
+
+    - name: Ping Windows hosts
+      win_ping:
+      when: ansible_connection == 'winrm'

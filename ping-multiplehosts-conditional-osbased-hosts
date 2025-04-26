@@ -1,0 +1,34 @@
+#[centos]
+#172.16.2.173 ansible_ssh_user=manishc
+
+#[ubuntu]
+#172.16.2.169 ansible_ssh_user=manishc
+
+#[windows]
+#172.16.2.165
+
+#[windows:vars]
+#ansible_user=Administrator
+#ansible_password=Sh1v@m123456
+#ansible_connection=winrm
+#ansible_winrm_server_cert_validation=ignore
+
+
+[local]
+localhost ansible_connection=local
+
+[linux]
+192.168.250.3 ansible_ssh_user=manishc
+192.168.250.4 ansible_ssh_user=manishc
+
+[windows]
+192.168.250.5
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=Sh1v@m123456
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_transport=ssl
+ansible_winrm_server_cert_validation=ignore
+#ansible_winrm_ca_trust_path=/etc/pki/ca-trust/source/anchors/Windows-Node-New.cer
