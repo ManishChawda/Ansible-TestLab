@@ -5,15 +5,27 @@
     ansible_python_interpreter: /usr/bin/python3.12
   tasks:
     - name: Ping CentOS hosts
-      ping: 
+      block:
+        - name: Ping CentOS hosts
+          ping: 
       #when: ansible_connection =='ssh'
       when: ansible_distribution == 'CentOS'
+      tags:
+        - centos
 
     - name: Ping Ubuntu hosts
-      ping:
+      block:
+        - name: Ping CentOS hosts
+          ping:
       #when: ansible_connection =='ssh'
       when: ansible_distribution == 'Ubuntu'
+      tags:
+        - ubuntu
 
     - name: Ping Windows hosts
-      win_ping:
+      block:
+        - name: Ping CentOS hosts
+          win_ping:
       when: ansible_connection == 'winrm'
+      tags:
+        - windows

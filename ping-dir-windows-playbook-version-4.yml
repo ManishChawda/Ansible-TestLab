@@ -7,11 +7,10 @@
     - name: Ping Windows node
       win_ping:
 
-    - name: List C:\ directory
+    - name: List C:\ directory safely
       win_command: cmd.exe /c dir C:/
       register: dir_output
-      ignore_errors: yes     # <--- Important: ignore any errors
-      failed_when: false
+      ignore_errors: yes    # allow command to fail without crashing playbook
 
     - name: Check if listing succeeded
       debug:

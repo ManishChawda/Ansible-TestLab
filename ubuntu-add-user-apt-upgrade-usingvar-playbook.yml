@@ -1,0 +1,27 @@
+- name: Intro to Ansible Playbooks
+  hosts: ubuntu
+  vars:
+      state: latest
+      user: john
+  
+  become: yes
+  become_method: sudo
+  
+  tasks:
+  - name: Add the user 'john' with password
+    ansible.builtin.user:
+      name: "{{user}}"
+      password: "{{ 'john' | password_hash('sha512') }}"  # Use hashed password
+
+  - name: Upgrade all apt packages
+    apt:
+      force_apt_get: yes
+      upgrade: dist
+
+  - name: Install the {{ state }} of package "nginx"
+    apt:
+      name: "nginx"
+      state: "{{ state }}"
+
+
+#Use ubuntu-add-user-apt-upgrade-inventory.yml
