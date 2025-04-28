@@ -3,26 +3,23 @@
   gather_facts: no
 
   tasks:
-
     - name: Ping Windows node
       win_ping:
+
+- name: Try directory listing
+  block:
 
     - name: List C:\ directory
       win_command: cmd.exe /c dir C:/
       register: dir_output
-      ignore_errors: yes     # <--- Important: ignore any errors
-      failed_when: false
+      failed_when: false    # force Ansible to think this task never fails
 
-    - name: Check if listing succeeded
+    - name: Debug success
       debug:
-        msg: "Directory listing successful!"
+        msg: "Directory listing succeeded!"
       when: dir_output.rc == 0
 
-    - name: Handle listing failure
+    - name: Debug failure
       debug:
         msg: "Directory listing FAILED: {{ dir_output.stderr }}"
       when: dir_output.rc != 0
-
-    - name: Always run this task
-      debug:
-        msg: "Finished directory handling tasks."

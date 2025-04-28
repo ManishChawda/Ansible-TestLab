@@ -1,0 +1,31 @@
+- name: Manage Windows hosts
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+
+    - name: Ping Windows node
+      win_ping:
+
+    - name: Handle Directory Listing
+      block:
+
+        - name: List C:\ directory
+          win_command: cmd.exe /c dir C:/
+          register: dir_output
+          ignore_errors: yes     # <--- Important: ignore any errors
+
+        - name: Check if listing succeeded
+          debug:
+            msg: "Directory listing successful!"
+          when: dir_output.rc == 0
+
+        - name: Handle listing failure
+          debug:
+            msg: "Directory listing FAILED. Please check path."
+          when: dir_output.rc != 0
+
+      always:
+        - name: Always run this task
+          debug:
+            msg: "Finished directory handling tasks."

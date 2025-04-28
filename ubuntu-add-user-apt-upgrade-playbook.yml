@@ -1,0 +1,17 @@
+---
+- name: Intro to Ansible Playbooks
+  hosts: ubuntu
+
+  tasks:
+  - name: Add the user 'bob' with a password
+    ansible.builtin.user:
+      name: bob
+      password: "{{ 'bob' | password_hash('sha512') }}"  # Use hashed password
+    become: yes
+    become_method: sudo
+
+  - name: Upgrade all apt packages
+    apt:
+      force_apt_get: yes
+      upgrade: dist
+    become: yes

@@ -1,5 +1,5 @@
 - name: Manage Linux hosts
-  hosts: linux
+  hosts: ubuntu
   gather_facts: yes
   tasks:
     - name: Ping
@@ -7,3 +7,8 @@
 
     - name: Check uptime
       command: uptime
+      register: uptime_output
+
+    - name: Show uptime of ubuntu
+      debug:
+        var: uptime_output.stdout_lines
