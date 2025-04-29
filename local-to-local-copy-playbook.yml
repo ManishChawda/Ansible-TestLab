@@ -1,0 +1,8 @@
+- name: Copy file locally (from one location to another on the local machine)
+  hosts: localhost
+  tasks:
+    - name: Copy ssh folder within local machine
+      ansible.builtin.copy:
+        src: ~/.ssh  # Local source file
+        dest: /tmp/ssh_backup  # Local destination
+        mode: '0644'

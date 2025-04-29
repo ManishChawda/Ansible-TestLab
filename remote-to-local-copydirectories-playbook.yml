@@ -1,0 +1,8 @@
+- name: Copy file from remote to local
+  hosts: ubuntu  # The remote host group defined in your inventory
+  tasks:
+    - name: Fetch ssh folder from remote host
+      ansible.builtin.synchronize:
+        src: /tmp/ssh_backup_192_168_250_2/ # Remote file/folder to copy
+        dest: ~/.ssh_backup_192_168_250_4  # Local destination
+        mode: pull # Pull the files from remote to local
