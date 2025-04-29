@@ -1,0 +1,24 @@
+- name: Run tasks in free strategy with async execution
+  hosts: all
+  strategy: free
+  gather_facts: no
+
+  tasks:
+    - name: Run a long task in the background
+      shell: sleep 30 && echo "Finished on {{ inventory_hostname }}"
+      async: 35   # Max time allowed
+      poll: 0     # Don’t wait, run in background
+      register: async_job
+
+    - name: Wait for the async job to finish
+      async_status:
+        jid: "{{ async_job.ansible_job_id }}"
+      register: job_result
+      until: job_result.finished
+      retries: 10
+      delay: 3
+
+    - name: Show output
+      debug:
+        var: job_result.stdout
+    
