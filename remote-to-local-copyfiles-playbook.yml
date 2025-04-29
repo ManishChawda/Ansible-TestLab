@@ -1,0 +1,16 @@
+- name: Copy files from remote to local
+  hosts: ubuntu  # The remote host group defined in your inventory
+  tasks:
+    - name: Fetch all files in .ssh_backup_192_168_250_2 directory
+      ansible.builtin.find:
+        paths: /tmp/ssh_backup_192_168_250_2/.ssh
+        recurse: yes  # Recursively find all files in the directory
+      register: ssh_files
+
+    - name: Fetch each file found
+      ansible.builtin.fetch:
+        src: "{{ item.path }}"
+        dest: "~/.ssh_backup_192_168_250_4/{{ item.path | basename }}"
+        flat: yes  # Flatten the destination to not replicate the folder structure
+      loop: "{{ ssh_files.files }}"
+      when: ssh_files.matched > 0
