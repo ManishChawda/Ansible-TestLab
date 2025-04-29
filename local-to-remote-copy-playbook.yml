@@ -1,0 +1,8 @@
+- name: Copy file from local to remote
+  hosts: centos  # The remote host group defined in your inventory
+  tasks:
+    - name: Copy ssh folder to remote host
+      ansible.builtin.copy:
+        src: ~/.ssh  # Local source file/folder
+        dest: /tmp/ssh_backup_192_168_250_2  # Remote destination
+        mode: '0644'
