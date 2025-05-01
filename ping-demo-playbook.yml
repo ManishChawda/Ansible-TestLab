@@ -7,3 +7,10 @@
     - name: Ping the host
       ansible.builtin.ping:
 
+    - name: Check the type of ansible_python_interpreter
+      debug:
+        msg: "The type of ansible_python_interpreter is: {{ ansible_python_interpreter | type_debug }}"
+
+
+
+      

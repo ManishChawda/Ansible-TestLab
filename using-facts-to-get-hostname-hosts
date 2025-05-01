@@ -1,0 +1,16 @@
+[centos]
+192.168.250.3 ansible_ssh_user=manishc ansible_python_interpreter=/usr/bin/python3.12
+
+[ubuntu]
+192.168.250.4 ansible_ssh_user=manishc ansible_python_interpreter=/usr/bin/python3.12
+
+[windows]
+192.168.250.5
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=Sh1v@m123456
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+ansible_python_interpreter=/usr/bin/python3.12
+
