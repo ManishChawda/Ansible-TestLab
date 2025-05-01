@@ -1,0 +1,8 @@
+---
+- name: Print information about my host
+  hosts: all
+  gather_facts: 'yes'
+  tasks:
+      - name: Print hostname
+        debug:
+            msg: "It's me, {{ ansible_hostname }}"
