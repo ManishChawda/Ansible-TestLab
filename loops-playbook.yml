@@ -1,0 +1,22 @@
+---
+- name: Demonstrate loops in Ansible
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  vars_prompt:
+    - name: ansible_become_password
+      prompt: "Enter sudo password"
+      private: yes
+
+  vars:
+    packages:
+      - curl
+      - wget
+      - git
+
+  tasks:
+    - name: Install multiple packages
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"  # This loops through the list
