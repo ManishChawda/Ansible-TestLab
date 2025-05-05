@@ -1,0 +1,5 @@
+[ubuntu]
+192.168.250.4 ansible_ssh_user=manishc ansible_user=sudo_user ansible_become=yes ansible_python_interpreter=/usr/bin/python3.12
+
+[centos]
+192.168.250.3 ansible_ssh_user=manishc ansible_user=sudo_user ansible_become=yes ansible_python_interpreter=/usr/bin/python3.12

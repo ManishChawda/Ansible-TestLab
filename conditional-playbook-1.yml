@@ -1,0 +1,20 @@
+---
+- name: Demonstrate conditionals in Ansible
+  hosts: all
+ # vars:
+ #   os_versions:
+ #       - "Ubuntu"
+ #       - "CentOS"
+
+  tasks:
+    - name: Install a package on Ubuntu
+      ansible.builtin.package:
+        name: curl
+        state: present
+      when: ansible_facts['os_family'] == "Ubuntu"  # This task will only run if os_version is "Ubuntu"
+
+    - name: Install a package on CentOS
+      ansible.builtin.package:
+        name: wget
+        state: present
+      when: ansible_facts['os_family'] == "CentOS"  # This task will only run if os_version is "CentOS"

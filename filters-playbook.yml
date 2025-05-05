@@ -1,0 +1,64 @@
+---
+- name: Demonstrate Jinja2 Filters
+  hosts: localhost
+  gather_facts: false
+  vars:
+    products:
+      - name: apple
+        price: 5
+      - name: banana
+        price: 15
+      - name: cherry
+        price: 20
+  
+  tasks:
+#Default Filter
+#The default filter is used to provide a default value if the variable is undefined or None.
+    - name: Show default value if variable is not defined
+      debug:
+        msg: "{{ my_variable | default('default_value') }}"
+
+#lower and upper Filters
+#These filters convert strings to lowercase or uppercase.
+    - name: Convert string to lowercase
+      debug:
+        msg: "{{ 'Hello World' | lower }}"
+
+    - name: Convert string to uppercase
+      debug:
+        msg: "{{ 'Hello World' | upper }}"
+
+#Join Filter
+#The join filter combines a list into a single string, optionally with a separator.
+    - name: Join list into a string
+      debug:
+        msg: "{{ ['apple', 'banana', 'cherry'] | join(', ') }}"
+
+#Split Filter
+#The split filter breaks a string into a list based on a delimiter.
+    - name: Split string into a list
+      debug:
+        msg: "{{ 'apple,banana,cherry' | split(',') }}"
+
+#Selectattr Filter
+#The selectattr filter is used to filter a list of dictionaries or objects based on a specific attribute.
+    - name: Select items with price greater than 10
+      debug:
+        msg: "{{ products | selectattr('price', 'gt', 10) | list }}"
+
+#Length Filter
+#The length filter returns the number of items in a list or characters in a string.
+    - name: Get the length of a string
+      debug:
+        msg: "{{ 'hello' | length }}"
+
+    - name: Get the length of a list
+      debug:
+        msg: "{{ ['apple', 'banana', 'cherry'] | length }}"
+
+#Regex_search Filter
+#The regex_search filter is used to find patterns in strings using regular expressions.
+    - name: Find a pattern in a string
+      debug:
+        msg: "{{ 'Hello world' | regex_search('world') }}"
+
