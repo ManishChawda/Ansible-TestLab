@@ -1,0 +1,10 @@
+# inventory
+[centos]
+server1
+server2
+
+[ubuntu]
+server3
+
+[windows]
+server4

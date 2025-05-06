@@ -1,0 +1,8 @@
+---
+- name: Use custom reverse filter
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Reverse a string using custom filter created in Python
+      debug:
+        msg: "{{ 'Hello World' | reverse }}"

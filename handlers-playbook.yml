@@ -1,0 +1,39 @@
+---
+- name: Run task only if previous task made a change
+  hosts: localhost
+  connection: local
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.12
+    ansible_user: manishc
+    ansible_become: true
+    ansible_become_method: sudo
+    # ansible_become_user: root
+    
+  tasks:
+    # - name: Install a package if not already installed
+    #  ansible.builtin.dnf:
+    #    name: httpd
+    #    state: present
+    #  register: result  # Register the output of the task to check if it changed anything
+
+    # - name: Restart Apache if it was installed or updated
+    #  ansible.builtin.service:
+    #    name: httpd
+    #    state: restarted
+    #  when: result.changed  # This task will run only if the 'httpd' package was installed or updated
+
+    - name: Install a package if not already installed
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      notify: Restart Apache  # Notify the handler when a change occurs
+
+  handlers:
+    - name: Restart Apache
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+
+
+# Handlers run only when notified, and only once per play even if multiple tasks trigger them.
+# This approach improves clarity and prevents unintended repeated restarts.
