@@ -1,0 +1,17 @@
+# playbook.yml
+---
+- name: Configure webservers
+  hosts: centos
+  become: yes
+  tasks:
+    - name: Show hostname
+      debug:
+        msg: "This server is {{ ansible_hostname }} with IP {{ ansible_host }}"
+    
+    - name: Print timezone
+      debug:
+        msg: "The timezone is {{ timezone }}"
+    
+    - name: Print backup status
+      debug:
+        msg: "Backup enabled: {{ backup }}"

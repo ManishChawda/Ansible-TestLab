@@ -1,0 +1,8 @@
+- name: Run locally without inventory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Say hello
+      ansible.builtin.debug:
+        msg: "Running on localhost without inventory"
