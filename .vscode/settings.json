@@ -1,3 +1,11 @@
 {
-    "ansible.python.interpreterPath": "/usr/bin/python"
+  "ansible.python.interpreterPath": "/home/manishc/Ansible-TestLab/.ansibletestlab-env/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.ansibletestlab-env/bin/python",
+  "python.pythonPath": "${workspaceFolder}/.ansibletestlab-env/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.venvPath": "${workspaceFolder}",
+  "terminal.integrated.env.linux": {
+    "VIRTUAL_ENV": "${workspaceFolder}/.ansibletestlab-env",
+    "PATH": "${workspaceFolder}/.ansibletestlab-env/bin:${env:PATH}"
+  }
 }

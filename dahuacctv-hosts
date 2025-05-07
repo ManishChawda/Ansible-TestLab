@@ -1,9 +1,0 @@
-#all:
-#  children:
-#    dahua:
-#      hosts:
-#        172.16.3.2:
-#          ansible_connection: local
-
-[dahua]
-172.16.3.2 ansible_connection=local ansible_python_interpreter=/usr/bin/python3.12
