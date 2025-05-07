@@ -1,4 +1,0 @@
-# host_vars/server2.yml
-ansible_user: manishc
-ansible_become: no
-hostname: centos
