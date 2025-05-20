@@ -1,0 +1,22 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+      #ansible_become: false
+      ansible_become: true
+      ansible_become_pass: Sh1v@m123456
+      ansible_python_interpreter: /usr/bin/python3.12
+    centos-node:
+      ansible_host: 192.168.250.3
+      ansible_user: manishc
+      ansible_become: true
+      ansible_become_pass: Sh1v@m123456
+      ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+      ansible_python_interpreter: /usr/bin/python3.12
+    ubuntu-node:
+      ansible_host: 192.168.250.4
+      ansible_user: manishc
+      ansible_become: true
+      ansible_become_pass: Sh1v@m123456
+      ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+      ansible_python_interpreter: /usr/bin/python3.12

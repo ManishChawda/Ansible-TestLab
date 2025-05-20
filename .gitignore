@@ -1,11 +1,16 @@
-# Ignore Python virtual environments
+# Ignore virtual environments
+.venv/
 .ansibletestlab-env/
 
-# Ignore Python cache files
+# Ignore Python cache
 __pycache__/
 
-# Ignore Ansible retry files
+# Ignore Ansible temporary/retry/log files
 *.retry
-
-# Ignore log files
 *.log
+
+# VS Code settings (optional if project-specific settings are shared)
+.vscode/
+
+# Ansible cache (optional, usually outside project dir)
+.ansible/

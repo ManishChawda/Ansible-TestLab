@@ -1,0 +1,30 @@
+- name: Cross-platform zlib installation using package_facts
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Gather installed package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Set correct zlib package name
+      ansible.builtin.set_fact:
+        zlib_package_name: "{{ 'zlib' if ansible_facts['pkg_mgr'] != 'apt' else 'zlib1g' }}"
+
+    - name: Check if zlib package is already installed
+      ansible.builtin.set_fact:
+        zlib_already_installed: "{{ zlib_package_name in ansible_facts.packages }}"
+
+    - name: Install zlib package (only if not installed)
+      ansible.builtin.package:
+        name: "{{ zlib_package_name }}"
+        state: present
+      when: not zlib_already_installed
+
+    - name: Log package installation status
+      ansible.builtin.debug:
+        msg: >-
+          {{ 'Package already installed: ' + zlib_package_name
+          if zlib_already_installed
+          else 'Package installed now: ' + zlib_package_name }}
+          

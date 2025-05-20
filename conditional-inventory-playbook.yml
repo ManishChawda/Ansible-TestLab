@@ -1,0 +1,17 @@
+---
+- name: Demonstrate conditionals in Ansible
+  hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Install zlib on Debian/Ubuntu
+      package:
+        name: zlib1g
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Install zlib-devel on RedHat/CentOS
+      package:
+        name: zlib-devel
+        state: present
+      when: ansible_facts['os_family'] == 'RedHat'
