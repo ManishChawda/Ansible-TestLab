@@ -14,3 +14,7 @@ __pycache__/
 
 # Ansible cache (optional, usually outside project dir)
 .ansible/
+
+# Ignore vault files
+winrm_vault_credentials.yml
+winrm_vault_credentials.txt
