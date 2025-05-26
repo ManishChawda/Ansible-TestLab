@@ -1,0 +1,14 @@
+windows:
+  hosts:
+    wsrv-node-ad.dcansible.com:
+    WDESKTOP-Node.dcansible.com:
+  vars:
+    ansible_user: ansibletest@DCANSIBLE.COM
+    #ansible_password: 3@lph@123456
+    ansible_connection: winrm
+    ansible_winrm_transport: kerberos
+    ansible_port: 5986
+    ansible_winrm_server_cert_validation: ignore
+    #ansible_winrm_kerberos_delegation: true
+    #ansible_winrm_scheme: https
+    ansible_python_interpreter: /usr/bin/python3.12

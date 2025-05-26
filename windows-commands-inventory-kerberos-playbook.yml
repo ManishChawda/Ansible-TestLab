@@ -1,0 +1,11 @@
+- name: Test Windows with Kerberos
+  hosts: windows
+  gather_facts: true
+  tasks:
+    - name: Display hostname from gathered facts
+      ansible.builtin.debug:
+        var: ansible_hostname
+    - name: Run whoami and hostname
+      ansible.windows.win_command: hostname
+    - name: Ping the node
+      ansible.builtin.win_ping:
